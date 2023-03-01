@@ -1,3 +1,5 @@
+import os.path
+
 import bottle
 import json
 import jinja2
@@ -8,6 +10,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from livereload import Server, shell
 from more_itertools import chunked
+from pathlib import Path
 
 
 def on_reload():
@@ -17,11 +20,17 @@ def on_reload():
         autoescape=select_autoescape(['html'])
     )
 
-    template = env.get_template("template.html")
-    rendered_page = template.render(books=list(chunked(books_info, 50)))
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    Path(os.path.join(current_dir, 'pages')).mkdir(exist_ok=True)
 
-    with open("index.html", "w", encoding='utf8') as file:
-        file.write(rendered_page)
+    chunked_books = list(chunked(books_info, 10))
+
+    for i, chunk in enumerate(chunked_books,1):
+        template = env.get_template("template.html")
+        rendered_page = template.render(books=chunk)
+        file_name = os.path.join("pages", f'index_{i}.html')
+        with open(file_name, "w", encoding='utf8') as file:
+            file.write(rendered_page)
 
 
 if __name__ == '__main__':

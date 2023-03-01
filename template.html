@@ -26,10 +26,9 @@
     -->
     <div class="container">
 	    <div class="row">
-		    {% for i in range(2) %}
 		      <div class="col">
 			      {{i}}
-			      {%for book in books[i]%}
+			      {%for book in books%}
 			      <!-- Card -->
 			      <div class="card mb-3" style="max-width: 540px;">
 				      <div class="row no-gutters">
@@ -41,7 +40,7 @@
 							      <h5 class="card-title">{{book.title}}</h5>
 							      <p class="card-text">{{book.author}}</p>
 							      <p class="card-text"><small class="text-muted">{{book.genres}}</small></p>
-							      <p><a href="{{book.book_path}}">Читать</a></p>
+							      <p><a href="{{book.book_path}}" target="_blank">Читать</a></p>
 						      </div>
 					      </div>
 				      </div>
@@ -49,8 +48,7 @@
 			      <!-- End of card -->
 			      {% endfor %}
 		      </div>
-		    {% endfor %}
-
+		    
 	    </div>
 
     </div>
