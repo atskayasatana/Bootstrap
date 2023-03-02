@@ -25,9 +25,13 @@ def on_reload():
 
     chunked_books = list(chunked(books_info, 10))
 
-    for i, chunk in enumerate(chunked_books,1):
+    pages_qty = len(chunked_books)
+
+    for i, chunk in enumerate(chunked_books, 1):
         template = env.get_template("template.html")
-        rendered_page = template.render(books=chunk)
+        rendered_page = template.render(books=chunk,
+                                        total_pages_qty=pages_qty,
+                                        current_page_num=i)
         file_name = os.path.join("pages", f'index_{i}.html')
         with open(file_name, "w", encoding='utf8') as file:
             file.write(rendered_page)
@@ -40,8 +44,8 @@ if __name__ == '__main__':
 
     on_reload()
     print(len(books_info))
-    b1 = list(chunked(books_info, 50))
-    print(len(b1[0]))
+    b1 = list(chunked(books_info, 10))
+    print(len(b1))
 
     server = Server()
     server.watch('template.html', on_reload)
