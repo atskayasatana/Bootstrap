@@ -112,7 +112,7 @@ if __name__ == '__main__':
             .mkdir(parents=True, exist_ok=True)
 
     try:
-        url = 'https://tululu.org/l55/'
+        url = 'https://tululu.org/l5/'
         response = requests.get(url)
         response.raise_for_status()
         check_for_redirect(response)
