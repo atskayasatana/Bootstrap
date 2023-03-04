@@ -1,8 +1,9 @@
 # Верстка с использованием библиотеки Bootstrap
 
-Сайт со скачанными с https://tululu.org/ книгами. Количество книг и, соответсвенно, количество страниц на сайте можно менять.
+Сайт со скачанными с https://tululu.org/ книгами. 
 
-На одной странице размещается не более 20 книг.
+Онлайн-версия на [GitHubPages](https://atskayasatana.github.io/Bootstrap/)
+
 
 ![Пример страницы](https://github.com/atskayasatana/Images/blob/main/index.png)
 
