@@ -116,14 +116,14 @@ def download_books_w_user_params(url,
                     book_download_params,
                     book_filename,
                     os.path.join(dwnld_dir, 'books'))
-                book_description['book_path'] = book_path
+                book_description['book_path'] = os.path.basename(book_path)
             if not skip_imgs:
                 image_filename = f'{book_id}. {book_description["title"]}.jpg'
                 image_path = download_img(
                     book_description["cover"],
                     image_filename,
                     os.path.join(dwnld_dir, 'images'))
-                book_description['image_path'] = image_path
+                book_description['image_path'] = os.path.basename(image_path)
             downloaded_books.append(book_description)
         except HTTPError:
             print(f'Книгу {book_description["title"]} скачать не удалось')
