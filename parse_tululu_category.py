@@ -16,7 +16,7 @@ if __name__ == '__main__':
     max_pages_qty = 1
 
     project_dir = os.path.dirname(os.path.realpath(__file__))
-    default_dwnld_dir = Path(os.path.join(project_dir, 'Downloads'))
+    default_dwnld_dir = Path(os.path.join(project_dir, 'Media'))
 
     parser = argparse.ArgumentParser(
         description='Скачиваем книги с сайта tululu.org'
