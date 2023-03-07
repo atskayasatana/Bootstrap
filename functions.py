@@ -122,7 +122,7 @@ def download_books_w_user_params(url,
                     os.path.join(dwnld_dir, 'books'))
                 book_description['book_path'] = os.path.basename(book_path)
             if not skip_imgs:
-                image_filename = f'{book_id}. {book_description["title"]}.jpg'
+                image_filename = f'{book_id}. {title}.jpg'
                 image_path = download_img(
                     book_description["cover"],
                     image_filename,
