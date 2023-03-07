@@ -6,6 +6,8 @@ from livereload import Server
 from more_itertools import chunked
 from pathlib import Path
 
+PROJECT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+
 
 def on_reload():
 
@@ -14,8 +16,7 @@ def on_reload():
         autoescape=select_autoescape(['html'])
     )
 
-    current_dir = os.path.dirname(os.path.realpath(__file__))
-    Path(os.path.join(current_dir, 'pages')).mkdir(exist_ok=True)
+    Path(os.path.join(PROJECT_DIRECTORY, 'pages')).mkdir(exist_ok=True)
 
     chunked_books = list(chunked(books_info, 20))
 
@@ -25,7 +26,8 @@ def on_reload():
         template = env.get_template("template.html")
         rendered_page = template.render(books=list(chunked(chunk, 10)),
                                         total_pages_qty=pages_qty,
-                                        current_page_num=i)
+                                        current_page_num=i,
+                                        current_dir=PROJECT_DIRECTORY)
 
         file_name = os.path.join("pages", f'index_{i}.html')
         with open(file_name, "w", encoding='utf8') as file:
@@ -34,8 +36,7 @@ def on_reload():
 
 if __name__ == '__main__':
 
-    project_directory = os.path.dirname(os.path.abspath(__file__))
-    json_filename = os.path.join(project_directory, 'Media', 'books.json')
+    json_filename = os.path.join(PROJECT_DIRECTORY, 'Media', 'books.json')
 
     with open(json_filename, "r") as books:
         books_info = json.load(books)
