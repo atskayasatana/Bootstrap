@@ -110,7 +110,11 @@ def download_books_w_user_params(url,
                 book_download_url = \
                     f'{urljoin("https://tululu.org/", "txt.php")}'
                 book_download_params = {'id': book_id}
-                book_filename = f'{book_id}. {book_description["title"]}.txt'
+
+                title = book_description["title"]
+                if len(title) > 100:
+                    title = title[:100]
+                book_filename = f'{book_id}. {title}.txt'
                 book_path = download_txt(
                     book_download_url,
                     book_download_params,
