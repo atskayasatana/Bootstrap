@@ -34,7 +34,10 @@ def on_reload():
 
 if __name__ == '__main__':
 
-    with open(r"D:\Bootstrap\Downloads\books.json", "r") as books:
+    project_directory = os.path.dirname(os.path.abspath(__file__))
+    json_filename = os.path.join(project_directory, 'Media', 'books.json')
+
+    with open(json_filename, "r") as books:
         books_info = json.load(books)
 
     on_reload()
