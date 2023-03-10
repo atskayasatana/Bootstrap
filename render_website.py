@@ -29,12 +29,19 @@ def on_reload():
                                         current_page_num=i,
                                         current_dir=PROJECT_DIRECTORY)
 
+        if i == 1:
+            index_page_name = os.path.join(PROJECT_DIRECTORY, f'index.html')
+            with open(index_page_name, "w", encoding='utf8') as file:
+                file.write(rendered_page)
+
         file_name = os.path.join("pages", f'index_{i}.html')
         with open(file_name, "w", encoding='utf8') as file:
             file.write(rendered_page)
 
 
 if __name__ == '__main__':
+
+    print(PROJECT_DIRECTORY)
 
     json_filename = os.path.join(PROJECT_DIRECTORY, 'Media', 'books.json')
 
