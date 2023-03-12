@@ -41,8 +41,6 @@ def on_reload():
 
 if __name__ == '__main__':
 
-    print(PROJECT_DIRECTORY)
-
     json_filename = os.path.join(PROJECT_DIRECTORY, 'Media', 'books.json')
 
     with open(json_filename, "r") as books:
