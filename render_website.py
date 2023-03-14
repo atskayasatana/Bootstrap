@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     json_filename = os.path.join(PROJECT_DIRECTORY, 'Media', 'books.json')
 
-    with open(json_filename, "r", encoding="ISO-8859-1") as books:
+    with open(json_filename, "r", encoding="CP1251") as books:
         books_info = json.load(books)
 
     on_reload()
