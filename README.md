@@ -4,8 +4,7 @@
 
 Онлайн-версия на [GitHubPages](https://atskayasatana.github.io/Bootstrap/)
 
-
-![Пример страницы](https://github.com/atskayasatana/Images/blob/main/index.png)
+![Главная страница](https://github.com/atskayasatana/Images/blob/2cfd674f0a0aa11116bb7cae8162dbbd910e1c1a/5/index.png)
 
 Чтобы открыть текстовую версию книги нужно кликнуть на "Читать":
 
@@ -28,28 +27,26 @@ python render_website.py
 
 Сайт с книгами будет здесь: http://127.0.0.1:5500/
 
-Можно также перейти в папку с проектом и найти файл index.html
+
+## Оффлайн версия
+
+После запуска скрипта в директории проекта появится папка pages с файлами index_<номер страницы>:
+
+![pages](https://github.com/atskayasatana/Images/blob/2cfd674f0a0aa11116bb7cae8162dbbd910e1c1a/5/pages_dir.png)
+
+Можно открыт любой из файлов с помощью браузера (Edge, Firefox, Chrome) и попасть на одну из страниц библиотеки. 
+
+На скрине ниже файл index_2.html:
+
+![index_2](https://github.com/atskayasatana/Images/blob/2cfd674f0a0aa11116bb7cae8162dbbd910e1c1a/5/page_example.png)
+
+Между страницами можно переходить с помощью "Вперед"/"Назад" или просто выбрав страницу.
 
 
-На странице будут представлены книги из папки Media данного архива.
 
 
-## Создание библиотеки с нуля
-
-Для скачивания книг используется скрипт parse_tululu_category.py, [здесь](https://github.com/atskayasatana/Parsing_2) представлена вся информация о функциях и аргументах. Пути к скачанным книгам, обложкам и json файлу менять не нужно, пользователь должен определить только начальную и конечную страницу с которых будут скачаны книги.
-
-```
-python parse_tululu_category.py -s[страница, откуда начнем скачивание] -e[страница, на которой заканчиваем]
-```
-
-## Создание сайта
-
-После того, как были скачаны книги необходимо запустить скрипт render_website.py
 
 
-```
-python render_website.py
-```
 
 
 
