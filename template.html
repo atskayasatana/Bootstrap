@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/Bootstrap/static/css/bootstrap.min.css">
+    <title>Книги с сайта tululu.org</title>
+    <link rel="icon" href="/Bootstrap/static/favicon.png" type="image/x-icon">
+  </head>
+  <body>
+    <h1 class="text-center">Книги с сайта tululu.org</h1>
+    <script src="/Bootstrap/static/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/Bootstrap/static/js/bootstrap.bundle.min.js"></script>
+    <!-- Paginator -->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center p-3 pagination-sm">
+          {% if current_page_num == 1 %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Назад</a>
+            </li>
+          {% else %}
+            <li class="page-item ">
+              <a class="page-link" href="/Bootstrap/pages/index_{{current_page_num-1}}.html" tabindex="-1" aria-disabled="false">Назад</a>
+            </li>
+          {% endif %}
+          {%for i in range(1,total_pages_qty+1)%}
+            {% if i == current_page_num %}
+              <li class="page-item active">
+                <a class="page-link" href="../pages/index_{{i}}.html">{{i}}</a>
+              </li>
+            {% else %}
+              <li class="page-item">
+                <a class="page-link" href="/Bootstrap/pages/index_{{i}}.html">{{i}}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+            {% if current_page_num == total_pages_qty %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Вперед</a>
+              </li>
+            {% else %}
+              <li class="page-item ">
+                <a class="page-link" href="/Bootstrap/pages/index_{{current_page_num+1}}.html">Вперед</a>
+              </li>
+            {% endif %}
+        </ul>
+      </nav>
+    <!-- End of Paginator-->
+      <div class="container">
+        <div class="row">
+          {% for books_cards_column in books_cards_on_page %}
+             <div class="col">
+              {% for book_card in books_cards_column %}
+              <!-- Card -->
+                <div class="card mb-3" style="max-width: 540px;">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img src="/Bootstrap/Media/images/{{book_card.image_path| urlencode}}"  class="card-img" alt="{{book_card.image_path}}" height="250">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">{{book_card.title}}</h5>
+                        <p class="card-text">{{book_card.author}}</p>
+                        {% for genre in book_card.genres %}
+                          <p><span class="badge text-bg-secondary">{{genre}}</span></p>
+                        {% endfor %}
+                            <p><a href="/Bootstrap/Media/books/{{book_card.book_path| urlencode}}" target="_blank">Читать</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <!-- End of card -->
+             {% endfor %}
+             </div>
+        {% endfor %}
+        </div>
+    <script src="../static/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <!-- Paginator -->
+      <nav aria-label="Page navigation example">
+	      <ul class="pagination justify-content-center p-3 pagination-sm">
+		      {% if current_page_num == 1 %}
+		        <li class="page-item disabled">
+			        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Назад</a>
+		        </li>
+		      {% else %}
+		        <li class="page-item ">
+			        <a class="page-link" href="../pages/index_{{current_page_num-1}}.html" tabindex="-1" aria-disabled="false">Назад</a>
+		        </li>
+		      {% endif %}
+		      {%for i in range(1,total_pages_qty+1)%}
+		        {% if i == current_page_num %}
+		          <li class="page-item active">
+			          <a class="page-link" href="../pages/index_{{i}}.html">{{i}}</a>
+		          </li>
+		        {% else %}
+		          <li class="page-item">
+			          <a class="page-link" href="../pages/index_{{i}}.html">{{i}}</a>
+		          </li>
+		        {% endif %}
+		      {% endfor %}
+			      {% if current_page_num == total_pages_qty %}
+		          <li class="page-item disabled">
+			          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Вперед</a>
+		          </li>
+			      {% else %}
+			        <li class="page-item ">
+			          <a class="page-link" href="../pages/index_{{current_page_num+1}}.html">Вперед</a>
+			        </li>
+			      {% endif %}
+	      </ul>
+      </nav>
+    <!-- End of Paginator-->
+      <div class="container">
+	      <div class="row">
+		      {% for books_cards_column in books_cards_on_page %}
+		         <div class="col">
+			        {% for book_card in books_cards_column %}
+			        <!-- Card -->
+			          <div class="card mb-3" style="max-width: 540px;">
+				          <div class="row no-gutters">
+					          <div class="col-md-4">
+						          <img src="../Media/images/{{book_card.image_path| urlencode}}"  class="card-img" alt="{{book_card.image_path}}" height="250">
+					          </div>
+					          <div class="col-md-8">
+						          <div class="card-body">
+							          <h5 class="card-title">{{book_card.title}}</h5>
+							          <p class="card-text">{{book_card.author}}</p>
+							          {% for genre in book_card.genres %}
+							            <p><span class="badge text-bg-secondary">{{genre}}</span></p>
+							          {% endfor %}
+							              <p><a href="../Media/books/{{book_card.book_path| urlencode}}" target="_blank">Читать</a></p>
+						          </div>
+					          </div>
+				          </div>
+			          </div>
+			      <!-- End of card -->
+			       {% endfor %}
+		         </div>
+	      {% endfor %}
+	      </div>
+      </div>
+  </body>
+</html>
